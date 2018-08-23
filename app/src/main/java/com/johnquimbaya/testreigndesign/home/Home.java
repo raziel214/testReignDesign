@@ -1,9 +1,11 @@
-package com.johnquimbaya.testreigndesign;
+package com.johnquimbaya.testreigndesign.home;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.johnquimbaya.testreigndesign.R;
+
+public class Home extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
