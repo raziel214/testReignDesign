@@ -7,8 +7,8 @@ import java.util.ArrayList;
  *
  */
 
-public class Url
-{
+public class Url{
+
     private String value;
 
     public String getValue() { return this.value; }

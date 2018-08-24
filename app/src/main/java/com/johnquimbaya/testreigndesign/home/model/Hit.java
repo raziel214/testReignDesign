@@ -1,5 +1,7 @@
 package com.johnquimbaya.testreigndesign.home.model;
 
+import com.google.gson.JsonElement;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -42,6 +44,29 @@ public class Hit{
     private String objectID;
 
     private HighlightResult _highlightResult;
+
+    public Hit(String created_at, String title, String url, String author, String points, String story_text, String comment_text, String num_comments, int story_id, String story_title, String story_url, int parent_id, int created_at_i, List<String> _tags, String objectID, HighlightResult _highlightResult) {
+        this.created_at = created_at;
+        this.title = title;
+        this.url = url;
+        this.author = author;
+        this.points = points;
+        this.story_text = story_text;
+        this.comment_text = comment_text;
+        this.num_comments = num_comments;
+        this.story_id = story_id;
+        this.story_title = story_title;
+        this.story_url = story_url;
+        this.parent_id = parent_id;
+        this.created_at_i = created_at_i;
+        this._tags = _tags;
+        this.objectID = objectID;
+        this._highlightResult = _highlightResult;
+    }
+
+    public Hit(JsonElement title, JsonElement url, JsonElement author, JsonElement points, JsonElement story_text, JsonElement comment_text, JsonElement num_comments, JsonElement story_id, JsonElement story_title, JsonElement story_url, JsonElement parent_id, JsonElement created_at_i, JsonElement objectID, JsonElement highlightResult) {
+    }
+
 
     public void setCreated_at(String created_at){
         this.created_at = created_at;
