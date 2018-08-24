@@ -1,6 +1,10 @@
 package com.johnquimbaya.testreigndesign.apiClient;
 
 import com.google.gson.JsonObject;
+import com.johnquimbaya.testreigndesign.home.model.CommentText;
+import com.johnquimbaya.testreigndesign.home.model.HighlightResult;
+import com.johnquimbaya.testreigndesign.home.model.Hit;
+import com.johnquimbaya.testreigndesign.home.model.RootObject;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -12,5 +16,5 @@ import retrofit2.http.GET;
 public interface Service {
 
     @GET(Constants.URL_GET_DATA)
-    Call<JsonObject>  getDataUser();
+    Call<RootObject>  getDataUser();
 }
