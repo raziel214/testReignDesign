@@ -4,8 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:background="@drawable/bg_gradient_gray">
+    <View android:id="@+id/threetDivider"
+        android:layout_height="2dp"
+        android:layout_width="fill_parent"
+        android:background="#151211" />
 
     <TextView
         android:id="@+id/listTitle"
@@ -14,10 +18,14 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         tools:text="Title" />
+    <View android:id="@+id/firstDivider"
+        android:layout_height="2dp"
+        android:layout_width="fill_parent"
+        android:background="#151211" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
 
 
         >
@@ -28,6 +36,9 @@
             android:layout_height="wrap_content"
             tools:text="Author"/>
 
+
+
+
         <TextView
             android:id="@+id/datePost"
             style="@style/mainFont"
@@ -36,6 +47,10 @@
             tools:text="Date" />
 
     </LinearLayout>
+    <View android:id="@+id/secondtDivider"
+        android:layout_height="5dp"
+        android:layout_width="fill_parent"
+        android:background="#151211" />
 
 
 </LinearLayout>

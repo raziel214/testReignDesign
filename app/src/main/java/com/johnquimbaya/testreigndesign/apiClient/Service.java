@@ -17,7 +17,7 @@ import retrofit2.http.GET;
 public interface Service {
 
     @GET(Constants.URL_GET_DATA)
-    Call<JsonObject> getDataPost();
+    Call<RootObject> getDataPost();
 
    /* @GET(Constants.URL_GET_DATA)
     Call<Hit> getDataUser2();*/

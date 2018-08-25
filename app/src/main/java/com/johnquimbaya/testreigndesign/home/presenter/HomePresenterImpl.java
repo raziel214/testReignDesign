@@ -5,6 +5,8 @@ import com.johnquimbaya.testreigndesign.home.interactor.HomeListInteractorImpl;
 import com.johnquimbaya.testreigndesign.home.model.Hit;
 import com.johnquimbaya.testreigndesign.home.view.HomeListView;
 
+import java.util.List;
+
 /**
  * created by john fredy quimbaya on 24/08/18.
  *
@@ -30,6 +32,12 @@ public class HomePresenterImpl implements HomePresenter {
     @Override
     public void showDataPost(Hit hit) {
         homeListInteractor.getDataPost();
+
+    }
+
+    @Override
+    public void showDataPostList(List<Hit> hits) {
+        homeListView.showDataPostList(hits);
 
     }
 

@@ -1,10 +1,15 @@
 package com.johnquimbaya.testreigndesign.home.repository;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.johnquimbaya.testreigndesign.apiClient.RestApiAdapter;
 import com.johnquimbaya.testreigndesign.apiClient.Service;
 import com.johnquimbaya.testreigndesign.home.model.Hit;
+import com.johnquimbaya.testreigndesign.home.model.RootObject;
 import com.johnquimbaya.testreigndesign.home.presenter.HomePresenter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,33 +34,21 @@ public class HomeListRepositoryImpl implements HomeListRepository {
 
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Service service= restApiAdapter.getClientService();
-        Call<JsonObject> call=service.getDataPost();
-        call.enqueue(new Callback<JsonObject>() {
-            @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                JsonObject  homeObject =response.body().getAsJsonObject("hits");
-                Hit  hit= new Hit(
-                        homeObject.get("title"),
-                        homeObject.get("url"),
-                        homeObject.get("author"),
-                        homeObject.get("points"),
-                        homeObject.get("story_text"),
-                        homeObject.get("comment_text"),
-                        homeObject.get("num_comments"),
-                        homeObject.get("story_id"),
-                        homeObject.get("story_title"),
-                        homeObject.get("story_url"),
-                        homeObject.get("parent_id"),
-                        homeObject.get("created_at_i"),
-                        homeObject.get("objectID"),
-                        homeObject.get("_highlightResult")
+        Call<RootObject> call=service.getDataPost();
+        call.enqueue(new Callback<RootObject>() {
 
-                );
-                homePresenter.showDataPost(hit);
+            @Override
+            public void onResponse(Call<RootObject> call, Response<RootObject> response) {
+
+                List<Hit>hits= response.body().getHits();
+                //List<Hit> hits = new Gson().fromJson(response.body().get("hits"), ArrayList.class);
+                homePresenter.showDataPostList(hits);
+
             }
 
             @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
+            public void onFailure(Call<RootObject> call, Throwable t) {
+
 
             }
         });
