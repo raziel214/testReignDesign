@@ -47,15 +47,9 @@ public class HomeListActivity extends AppCompatActivity implements  HomeListView
         recyclerView.setAdapter(recyclerViewAdapter);
 
         getDataPost();
-
-
-
-
-
-
-
-
     }
+
+
 
     @Override
     public void getDataPost() {

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.johnquimbaya.testreigndesign.R;
 import com.johnquimbaya.testreigndesign.home.model.Hit;
+import com.johnquimbaya.testreigndesign.home.view.HomeListActivity;
 import com.johnquimbaya.testreigndesign.home.view.HomeListView;
 
 import java.util.ArrayList;
@@ -27,27 +28,49 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
     private HomeListView homeListViewactivity;
 
 
+
     public HomeListAdapter(List<Hit> hits,  HomeListView homeListViewactivity) {
         this.hits = hits;
         this.homeListViewactivity = homeListViewactivity;
+
     }
+
 
 
 
     @NonNull
     @Override
     public HomeListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.lis_item_cardview,parent,false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeListAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HomeListAdapter.MyViewHolder holder, final int position) {
 
         Hit  hit= hits.get(position);
-        holder.textViewDate.setText(hit.getCreated_at());
-        holder.textViewTitle.setText(hit.getStory_title());
+        String Date=hit.getCreated_at();//tr.subSequence(int Start , int End)
+        holder.textViewDate.setText(Date.subSequence(0,10));
+
+        if(hit.getStory_title()!=null && hit.getTitle()==null){
+            holder.textViewTitle.setText("  "+hit.getStory_title());
+        }
+        if(hit.getTitle()!=null && hit.getStory_title()==null){
+            holder.textViewTitle.setText("  "+hit.getTitle());
+        }
+        if(hit.getStory_title()!=null && hit.getTitle()!=null){
+            holder.textViewTitle.setText("  "+hit.getStory_title());
+        }
         holder.textViewAuthor.setText(hit.getAuthor());
+        //holder.textViewTitle2.setText(hit.getTitle());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //homeListViewactivity
+
+            }
+        });
 
     }
 
@@ -61,6 +84,7 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
         private TextView textViewTitle;
         private TextView textViewAuthor;
         private TextView textViewDate;
+        //private TextView textViewTitle2;
 
 
         public MyViewHolder(View itemView) {
@@ -68,9 +92,10 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
 
             super(itemView);
 
-            textViewTitle = itemView.findViewById(R.id.listTitle);
-            textViewAuthor= itemView.findViewById(R.id.authorPost);
-            textViewDate= itemView.findViewById(R.id.datePost);
+            textViewTitle = itemView.findViewById(R.id.titleservice);
+            textViewAuthor= itemView.findViewById(R.id.authorPostservice);
+            textViewDate= itemView.findViewById(R.id.datePostservice);
+            //textViewTitle2= itemView.findViewById(R.id.storytitleservice);
 
         }
     }
