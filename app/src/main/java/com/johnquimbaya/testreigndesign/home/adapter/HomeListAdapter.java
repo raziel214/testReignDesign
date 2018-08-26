@@ -67,7 +67,7 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull HomeListAdapter.MyViewHolder holder, final int position) {
 
-        Hit  hit= hits.get(position);
+        final Hit  hit= hits.get(position);
         String Date=hit.getCreated_at();//tr.subSequence(int Start , int End)
         holder.textViewDate.setText(Date.subSequence(0,10));
 
@@ -89,9 +89,14 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
                 @Override
                 public void onClick(View v) {
                     //homeListViewactivity
+                    String a= String.valueOf(hits.size());
 
-                    if (homeListViewactivity != null){
-                        homeListViewactivity.onItemClick(position);
+                    if (a!=null){
+                        String hit1= hit.getStory_url();
+
+                        
+                        homeListViewactivity.showDataPost(hit);
+
                     }
 
 
