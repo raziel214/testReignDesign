@@ -76,13 +76,27 @@ public class HomeListActivity extends AppCompatActivity implements  HomeListView
         Url=hit.getStory_url();
         //Toast.makeText(this,"hollllllaaaaa"+Url, Toast.LENGTH_LONG).show();
             try {
-                Intent i = new Intent(this, activity_webview.class);
+                if(Url.length()!=0){
+
+                    Intent i = new Intent(this, activity_webview.class);
+                    i.putExtra(activity_webview.urlPost,Url);
+                    startActivity(i);
+                }
+
+
+                else{
+
+                    Toast.makeText(this,"Url No disponible", Toast.LENGTH_LONG).show();
+                }
+
+
+                /*Intent i = new Intent(this, activity_webview.class);
                 i.putExtra(activity_webview.urlPost,Url);
-                startActivity(i);
+                startActivity(i);*/
 
             }catch (Exception e){
 
-                Toast.makeText(this,"Url No disponible", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this,"Url No disponible", Toast.LENGTH_LONG).show();
 
             }
 
