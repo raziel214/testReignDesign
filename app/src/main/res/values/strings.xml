@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">testReignDesign</string>
+    <string name="transitionname_picture">transitionnamepicture</string>
 </resources>

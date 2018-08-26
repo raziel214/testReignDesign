@@ -15,6 +15,7 @@ public interface HomeListView {
 
     void showDataPost(Hit hit);
     void showDataPostList(List<Hit>hitList);
+    void onItemClick(int item);
 
 
 }

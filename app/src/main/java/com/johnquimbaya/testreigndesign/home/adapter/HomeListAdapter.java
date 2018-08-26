@@ -2,20 +2,27 @@ package com.johnquimbaya.testreigndesign.home.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 import com.johnquimbaya.testreigndesign.R;
+import com.johnquimbaya.testreigndesign.detailPost.activity_webview;
 import com.johnquimbaya.testreigndesign.home.model.Hit;
 import com.johnquimbaya.testreigndesign.home.view.HomeListActivity;
 import com.johnquimbaya.testreigndesign.home.view.HomeListView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.support.constraint.Constraints.TAG;
 
 /**
  * created by john fredy quimbaya on 23/08/18.
@@ -26,10 +33,17 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
 
     private List<Hit> hits;
     private HomeListView homeListViewactivity;
+    private OnClickListenerV onClickListenerV;
+
+    /*public HomeListAdapter(List<Hit> hits, HomeListView homeListViewactivity, OnClickListenerV onClickListenerV) {
+        this.hits = hits;
+        this.homeListViewactivity = homeListViewactivity;
+        this.onClickListenerV = onClickListenerV;
+    }*/
 
 
 
-    public HomeListAdapter(List<Hit> hits,  HomeListView homeListViewactivity) {
+    public HomeListAdapter(List<Hit> hits, HomeListView homeListViewactivity) {
         this.hits = hits;
         this.homeListViewactivity = homeListViewactivity;
 
@@ -41,8 +55,13 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
     @NonNull
     @Override
     public HomeListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.lis_item_cardview,parent,false);
-        return new MyViewHolder(view);
+        View view= LayoutInflater.from(parent.getContext()).
+                inflate(R.layout.lis_item_cardview,parent,false);
+
+        MyViewHolder myViewHolder=new MyViewHolder(view);
+        //view.setOnClickListener((View.OnClickListener) parent.getContext());
+
+               return myViewHolder;
     }
 
     @Override
@@ -64,13 +83,23 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
         holder.textViewAuthor.setText(hit.getAuthor());
         //holder.textViewTitle2.setText(hit.getTitle());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //homeListViewactivity
+        if (hits.get(position)!=null){
 
-            }
-        });
+            holder.imageViewCard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //homeListViewactivity
+
+                    if (homeListViewactivity != null){
+                        homeListViewactivity.onItemClick(position);
+                    }
+
+
+
+
+                }
+            });
+        }
 
     }
 
@@ -84,6 +113,7 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
         private TextView textViewTitle;
         private TextView textViewAuthor;
         private TextView textViewDate;
+        private ImageView imageViewCard;
         //private TextView textViewTitle2;
 
 
@@ -95,6 +125,7 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
             textViewTitle = itemView.findViewById(R.id.titleservice);
             textViewAuthor= itemView.findViewById(R.id.authorPostservice);
             textViewDate= itemView.findViewById(R.id.datePostservice);
+            imageViewCard=itemView.findViewById(R.id.pictureCard);
             //textViewTitle2= itemView.findViewById(R.id.storytitleservice);
 
         }

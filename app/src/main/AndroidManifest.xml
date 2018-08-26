@@ -18,7 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".detailPost.activity_webview"></activity>
+        <activity
+            android:name=".detailPost.activity_webview"
+            android:parentActivityName=".home.view.HomeListActivity"
+
+
+            >
+
+            </activity>
     </application>
 
 </manifest>
