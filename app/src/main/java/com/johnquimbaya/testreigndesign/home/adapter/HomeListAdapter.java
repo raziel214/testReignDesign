@@ -35,22 +35,12 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
     private HomeListView homeListViewactivity;
     private OnClickListenerV onClickListenerV;
 
-    /*public HomeListAdapter(List<Hit> hits, HomeListView homeListViewactivity, OnClickListenerV onClickListenerV) {
-        this.hits = hits;
-        this.homeListViewactivity = homeListViewactivity;
-        this.onClickListenerV = onClickListenerV;
-    }*/
-
-
 
     public HomeListAdapter(List<Hit> hits, HomeListView homeListViewactivity) {
         this.hits = hits;
         this.homeListViewactivity = homeListViewactivity;
 
     }
-
-
-
 
     @NonNull
     @Override
